@@ -24,6 +24,13 @@ namespace ToDos.Controllers
             if (items == null || !items.Any()) { return NoContent(); }
             return Ok(items);
         }
+          [HttpGet("{id:int}")]
+  public async Task<IActionResult> GetToDoItemById(int id)
+  {
+      var item = await _toDoService.GetSingleToDo(id);
+      if (item == null ) { return NoContent(); }
+      return Ok(item);
+  }
         [HttpPost]
         [Route(nameof(AddToDoItems))]
         public async Task<IActionResult> AddToDoItems(NewTodo item)
