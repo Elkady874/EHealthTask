@@ -21,6 +21,12 @@ namespace ToDos.Service
           return  _mapper.Map<List<ToDoItemEntity>,List<ToDo>>(todos);
 
         }
+           public async Task<ToDo> GetSingleToDo(int toDoId)
+   {
+       ToDoItemEntity  todo = await _toDoRepository.GetItemByIdAsync(toDoId);
+       return _mapper.Map<ToDoItemEntity, ToDo>(todo);
+
+   }
 
         public async Task AddToDo(NewTodo item)
         {
