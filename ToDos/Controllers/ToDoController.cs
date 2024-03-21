@@ -33,7 +33,7 @@ namespace ToDos.Controllers
   }
         [HttpPost]
         [Route(nameof(AddToDoItems))]
-        public async Task<IActionResult> AddToDoItems(NewTodo item)
+        public async Task<IActionResult> AddToDoItems( [FromBody] NewTodo item)
         {
             await _toDoService.AddToDo(item);
             return Ok("SuccessFull Insert");
@@ -47,7 +47,7 @@ namespace ToDos.Controllers
         }
         [HttpPut]
         [Route(nameof(EditToDo))]
-        public async Task<IActionResult> EditToDo(ToDo item)
+        public async Task<IActionResult> EditToDo( [FromBody] ToDo item)
         {
             await _toDoService.EditToDo(item);
             return Ok("SuccessFull Update");
